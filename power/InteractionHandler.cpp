@@ -27,8 +27,8 @@ using android::base::WriteStringToFile;
 
 InteractionHandler::InteractionHandler()
     : mState(INTERACTION_STATE_UNINITIALIZED),
-      mMinDurationMs(1400),
-      mMaxDurationMs(5650),
+      mMinDurationMs(450),
+      mMaxDurationMs(3650),
       mDurationMs(0) {
 }
 
@@ -86,7 +86,7 @@ void InteractionHandler::Acquire(int32_t duration) {
         return;
     }
 
-    int inputDuration = duration + 650;
+    int inputDuration = duration + 350;
     int finalDuration;
     if (inputDuration > mMaxDurationMs)
         finalDuration = mMaxDurationMs;
