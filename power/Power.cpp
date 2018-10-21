@@ -35,6 +35,16 @@ Power::Power() {
 
 // Methods from ::android::hardware::power::V1_0::IPower follow.
 Return<void> Power::setInteractive(bool interactive) {
+    switch (interactive) {
+    case true:
+        WriteStringToFile("1", "/sys/class/sec/tsp/input/enabled", false);
+        break;
+    case false:
+        WriteStringToFile("0", "/sys/class/sec/tsp/input/enabled", false);
+        break;
+    default:
+        return Void();
+    }
     return Void();
 }
 
